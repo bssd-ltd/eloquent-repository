@@ -1,4 +1,4 @@
-# Eloquent Repository for Lumen
+# Eloquent Repository for Lumen ^8
 Adapt for lumen with lumen passport
 
 The orignial source can be found [here](https://github.com/orkhanahmadov/eloquent-repository)
