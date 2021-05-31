@@ -5,7 +5,7 @@ The orignial source can be found [here](https://github.com/orkhanahmadov/eloquen
 
 
 ## Awareable 
-
+Only v8 is supported
 
 ## License
 
