@@ -1,13 +1,13 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests\Repository\Eloquent\Criteria;
+namespace Bssd\EloquentRepository\Tests\Repository\Eloquent\Criteria;
 
 use Illuminate\Support\Facades\DB;
-use Orkhanahmadov\EloquentRepository\Tests\Model;
-use Orkhanahmadov\EloquentRepository\Tests\TestCase;
-use Orkhanahmadov\EloquentRepository\Tests\ModelRelation;
-use Orkhanahmadov\EloquentRepository\Tests\FakeModelRepository;
-use Orkhanahmadov\EloquentRepository\Repository\Eloquent\Criteria\EagerLoad;
+use Bssd\EloquentRepository\Tests\Model;
+use Bssd\EloquentRepository\Tests\TestCase;
+use Bssd\EloquentRepository\Tests\ModelRelation;
+use Bssd\EloquentRepository\Tests\FakeModelRepository;
+use Bssd\EloquentRepository\Repository\Eloquent\Criteria\EagerLoad;
 
 class EagerLoadTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Repository\Eloquent\Criteria;
+namespace Bssd\EloquentRepository\Repository\Eloquent\Criteria;
 
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Builder;
-use Orkhanahmadov\EloquentRepository\Repository\Criteria\Criterion;
+use Bssd\EloquentRepository\Repository\Criteria\Criterion;
 
 class Scope implements Criterion
 {

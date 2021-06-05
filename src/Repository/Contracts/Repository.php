@@ -1,6 +1,6 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Repository\Contracts;
+namespace Bssd\EloquentRepository\Repository\Contracts;
 
 interface Repository
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests\Repository;
+namespace Bssd\EloquentRepository\Tests\Repository;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
-use Orkhanahmadov\EloquentRepository\Tests\Model;
-use Orkhanahmadov\EloquentRepository\Tests\TestCase;
+use Bssd\EloquentRepository\Tests\Model;
+use Bssd\EloquentRepository\Tests\TestCase;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Orkhanahmadov\EloquentRepository\EloquentRepository;
-use Orkhanahmadov\EloquentRepository\Tests\FakeModelRepository;
-use Orkhanahmadov\EloquentRepository\Tests\FakeModelRelationRepository;
-use Orkhanahmadov\EloquentRepository\Tests\FakeModelCacheableRepository;
+use Bssd\EloquentRepository\EloquentRepository;
+use Bssd\EloquentRepository\Tests\FakeModelRepository;
+use Bssd\EloquentRepository\Tests\FakeModelRelationRepository;
+use Bssd\EloquentRepository\Tests\FakeModelCacheableRepository;
 
 class EloquentRepositoryTest extends TestCase
 {
@@ -110,7 +110,7 @@ class EloquentRepositoryTest extends TestCase
     public function testFindException()
     {
         $this->expectException(ModelNotFoundException::class);
-        $this->expectExceptionMessage('No query results for model [Orkhanahmadov\EloquentRepository\Tests\Model] 15');
+        $this->expectExceptionMessage('No query results for model [Bssd\EloquentRepository\Tests\Model] 15');
         Model::create(['id' => 5, 'name' => 'model1']);
 
         $this->modelRepository->find(15);
@@ -177,7 +177,7 @@ class EloquentRepositoryTest extends TestCase
     public function testGetWhereFirstException()
     {
         $this->expectException(ModelNotFoundException::class);
-        $this->expectExceptionMessage('No query results for model [Orkhanahmadov\EloquentRepository\Tests\Model].');
+        $this->expectExceptionMessage('No query results for model [Bssd\EloquentRepository\Tests\Model].');
         Model::create(['id' => 5, 'name' => 'model name']);
         Model::create(['id' => 15, 'name' => 'model name']);
 
@@ -197,7 +197,7 @@ class EloquentRepositoryTest extends TestCase
     public function testGetWhereInFirstException()
     {
         $this->expectException(ModelNotFoundException::class);
-        $this->expectExceptionMessage('No query results for model [Orkhanahmadov\EloquentRepository\Tests\Model].');
+        $this->expectExceptionMessage('No query results for model [Bssd\EloquentRepository\Tests\Model].');
         Model::create(['id' => 5, 'name' => 'model name']);
         Model::create(['id' => 15, 'name' => 'model name']);
 
@@ -278,7 +278,7 @@ class EloquentRepositoryTest extends TestCase
     public function testFindFromTrashedNotFoundException()
     {
         $this->expectException(ModelNotFoundException::class);
-        $this->expectExceptionMessage('No query results for model [Orkhanahmadov\EloquentRepository\Tests\Model] 10');
+        $this->expectExceptionMessage('No query results for model [Bssd\EloquentRepository\Tests\Model] 10');
         Model::create(['id' => 5, 'name' => 'model name', 'deleted_at' => now()->subDay()]);
 
         $this->modelRepository->findFromTrashed(10);
