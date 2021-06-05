@@ -1,6 +1,6 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository;
+namespace Bssd\EloquentRepository;
 
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Laravel\Lumen\Application;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Orkhanahmadov\EloquentRepository\Repository\Criteria;
+use Bssd\EloquentRepository\Repository\Criteria;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Orkhanahmadov\EloquentRepository\Repository\Contracts\Repository;
-use Orkhanahmadov\EloquentRepository\Repository\Concerns\CreatesEntity;
-use Orkhanahmadov\EloquentRepository\Repository\Concerns\DeletesEntity;
-use Orkhanahmadov\EloquentRepository\Repository\Concerns\SelectsEntity;
-use Orkhanahmadov\EloquentRepository\Repository\Concerns\UpdatesEntity;
+use Bssd\EloquentRepository\Repository\Contracts\Repository;
+use Bssd\EloquentRepository\Repository\Concerns\CreatesEntity;
+use Bssd\EloquentRepository\Repository\Concerns\DeletesEntity;
+use Bssd\EloquentRepository\Repository\Concerns\SelectsEntity;
+use Bssd\EloquentRepository\Repository\Concerns\UpdatesEntity;
 
 class EloquentRepository implements Repository
 {

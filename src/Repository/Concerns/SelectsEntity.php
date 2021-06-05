@@ -1,20 +1,20 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Repository\Concerns;
+namespace Bssd\EloquentRepository\Repository\Concerns;
 
 use Illuminate\Support\Arr;
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Orkhanahmadov\EloquentRepository\Repository\Contracts\Cacheable;
+use Bssd\EloquentRepository\Repository\Contracts\Cacheable;
 
 /**
  * @property-read Builder|Model $model
  * @property-read Factory $cache
  * @method string cacheKey()
  * @method int cacheTTLValue()
- * @mixin \Orkhanahmadov\EloquentRepository\EloquentRepository
+ * @mixin \Bssd\EloquentRepository\EloquentRepository
  */
 trait SelectsEntity
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests;
+namespace Bssd\EloquentRepository\Tests;
 
-use Orkhanahmadov\EloquentRepository\EloquentRepository;
+use Bssd\EloquentRepository\EloquentRepository;
 
 class FakeModelRelationRepository extends EloquentRepository
 {

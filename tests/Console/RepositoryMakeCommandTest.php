@@ -1,9 +1,9 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests\Console;
+namespace Bssd\EloquentRepository\Tests\Console;
 
 use InvalidArgumentException;
-use Orkhanahmadov\EloquentRepository\Tests\TestCase;
+use Bssd\EloquentRepository\Tests\TestCase;
 
 class RepositoryMakeCommandTest extends TestCase
 {

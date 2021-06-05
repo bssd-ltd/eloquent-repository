@@ -1,9 +1,9 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests;
+namespace Bssd\EloquentRepository\Tests;
 
 use Illuminate\Foundation\Application;
-use Orkhanahmadov\EloquentRepository\ServiceProvider;
+use Bssd\EloquentRepository\ServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

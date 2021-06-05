@@ -1,9 +1,9 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository;
+namespace Bssd\EloquentRepository;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Orkhanahmadov\EloquentRepository\Console\RepositoryMakeCommand;
+use Bssd\EloquentRepository\Console\RepositoryMakeCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Repository\Criteria;
+namespace Bssd\EloquentRepository\Repository\Criteria;
 
 interface Criterion
 {

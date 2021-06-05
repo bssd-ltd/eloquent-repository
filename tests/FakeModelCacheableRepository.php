@@ -1,9 +1,9 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests;
+namespace Bssd\EloquentRepository\Tests;
 
-use Orkhanahmadov\EloquentRepository\EloquentRepository;
-use Orkhanahmadov\EloquentRepository\Repository\Contracts\Cacheable;
+use Bssd\EloquentRepository\EloquentRepository;
+use Bssd\EloquentRepository\Repository\Contracts\Cacheable;
 
 class FakeModelCacheableRepository extends EloquentRepository implements Cacheable
 {

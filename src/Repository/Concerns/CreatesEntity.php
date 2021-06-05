@@ -1,13 +1,13 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Repository\Concerns;
+namespace Bssd\EloquentRepository\Repository\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property-read Builder|Model $model
- * @mixin \Orkhanahmadov\EloquentRepository\EloquentRepository
+ * @mixin \Bssd\EloquentRepository\EloquentRepository
  */
 trait CreatesEntity
 {

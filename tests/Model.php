@@ -1,6 +1,6 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Tests;
+namespace Bssd\EloquentRepository\Tests;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;

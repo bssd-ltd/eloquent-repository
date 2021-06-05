@@ -1,6 +1,6 @@
 <?php
 
-namespace Orkhanahmadov\EloquentRepository\Console;
+namespace Bssd\EloquentRepository\Console;
 
 use Illuminate\Support\Str;
 use InvalidArgumentException;

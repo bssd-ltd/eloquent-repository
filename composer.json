@@ -1,5 +1,5 @@
 {
-    "name": "orkhanahmadov/eloquent-repository",
+    "name": "bssd-ltd/eloquent-repository",
     "description": "Eloquent Repository for Lumen",
     "keywords": [
         "laravel-repository",
@@ -26,7 +26,7 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
         "illuminate/console": "^8.0",
         "illuminate/container": "^8.0",
         "illuminate/contracts": "^8.0",
@@ -40,12 +40,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Orkhanahmadov\\EloquentRepository\\": "src"
+            "Bssd\\EloquentRepository\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Orkhanahmadov\\EloquentRepository\\Tests\\": "tests"
+            "Bssd\\EloquentRepository\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -58,7 +58,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Orkhanahmadov\\EloquentRepository\\ServiceProvider"
+                "Bssd\\EloquentRepository\\ServiceProvider"
             ]
         }
     }
