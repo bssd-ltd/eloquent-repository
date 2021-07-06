@@ -193,4 +193,25 @@ trait SelectsEntity
     {
         return $this->getWhere($column, $value)->count() > 0;
     }
+
+    /**
+     * Finds models with "where" condition and sort. Default sorted by desc primary key
+     *
+     * @param  array  $conditions
+     * @param  array|null  $sortedBy
+     *
+     * @return Builder[]|Collection
+     */
+    public function getWhereAndSort(array $conditions, array $sortedBy = null)
+    {
+        $sortedBy = empty($sortedBy) ? [$this->model->getKeyName() => 'desc'] : $sortedBy;
+        $searcher = $this->model;
+        foreach ($conditions as $key => $val) {
+            $searcher = $this->model->where($key, $val);
+        }
+        foreach ($sortedBy as $key => $val) {
+            $searcher = $this->model->orderBy($key, $val);
+        }
+        return $searcher->get();
+    }
 }
