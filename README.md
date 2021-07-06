@@ -1,5 +1,5 @@
 # Eloquent Repository for Lumen Framwwork
-***Adapt for lumen (with lumen-passport)***
+***Adapted with lumen Framwwork***
 
 The orignial source can be found [here](https://github.com/orkhanahmadov/eloquent-repository)
 
