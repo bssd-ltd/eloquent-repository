@@ -2,9 +2,9 @@
 
 namespace Bssd\EloquentRepository\Repository\Eloquent\Criteria;
 
-use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Builder;
 use Bssd\EloquentRepository\Repository\Criteria\Criterion;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class Scope implements Criterion
 {
@@ -15,7 +15,8 @@ class Scope implements Criterion
 
     /**
      * Scope constructor.
-     * @param mixed ...$scopes
+     *
+     * @param  mixed  ...$scopes
      */
     public function __construct(...$scopes)
     {
@@ -23,7 +24,7 @@ class Scope implements Criterion
     }
 
     /**
-     * @param Builder|mixed $model
+     * @param  Builder|mixed  $model
      *
      * @return Builder|mixed
      */

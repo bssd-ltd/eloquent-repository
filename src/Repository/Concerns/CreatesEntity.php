@@ -2,8 +2,8 @@
 
 namespace Bssd\EloquentRepository\Repository\Concerns;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property-read Builder|Model $model
@@ -14,7 +14,7 @@ trait CreatesEntity
     /**
      * Creates model.
      *
-     * @param mixed $properties
+     * @param  mixed  $properties
      *
      * @return Builder|Model
      */

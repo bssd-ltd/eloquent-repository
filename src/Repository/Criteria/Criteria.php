@@ -5,7 +5,7 @@ namespace Bssd\EloquentRepository\Repository\Criteria;
 interface Criteria
 {
     /**
-     * @param mixed ...$criteria
+     * @param  mixed  ...$criteria
      *
      * @return $this
      */

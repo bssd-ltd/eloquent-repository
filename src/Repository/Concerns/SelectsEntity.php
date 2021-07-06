@@ -2,12 +2,12 @@
 
 namespace Bssd\EloquentRepository\Repository\Concerns;
 
-use Illuminate\Support\Arr;
+use Bssd\EloquentRepository\Repository\Contracts\Cacheable;
 use Illuminate\Contracts\Cache\Factory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Bssd\EloquentRepository\Repository\Contracts\Cacheable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 /**
  * @property-read Builder|Model $model
@@ -27,7 +27,7 @@ trait SelectsEntity
     {
         if ($this instanceof Cacheable) {
             return $this->cache->remember(
-                $this->cacheKey() . '.*',
+                $this->cacheKey().'.*',
                 $this->cacheTTLValue(),
                 function () {
                     return $this->get();
@@ -41,7 +41,7 @@ trait SelectsEntity
     /**
      * Returns all models with selected columns.
      *
-     * @param mixed $columns
+     * @param  mixed  $columns
      *
      * @return Builder[]|Collection
      */
@@ -59,7 +59,7 @@ trait SelectsEntity
     /**
      * Finds a model with ID.
      *
-     * @param int|string $modelId
+     * @param  int|string  $modelId
      *
      * @return Builder|Builder[]|Collection|Model|null
      */
@@ -67,7 +67,7 @@ trait SelectsEntity
     {
         if ($this instanceof Cacheable) {
             $model = $this->cache->remember(
-                $this->cacheKey() . '.' . $modelId,
+                $this->cacheKey().'.'.$modelId,
                 $this->cacheTTLValue(),
                 function () use ($modelId) {
                     return $this->model->find($modelId);
@@ -77,7 +77,7 @@ trait SelectsEntity
             $model = $this->model->find($modelId);
         }
 
-        if (! $model) {
+        if (!$model) {
             $this->throwModelNotFoundException($modelId);
         }
 
@@ -87,7 +87,7 @@ trait SelectsEntity
     /**
      * Paginates models.
      *
-     * @param int $perPage
+     * @param  int  $perPage
      *
      * @return Builder[]|Collection|mixed
      */
@@ -97,10 +97,78 @@ trait SelectsEntity
     }
 
     /**
+     * Finds models with "whereIn" condition.
+     *
+     * @param  string  $column
+     * @param  mixed  $values
+     *
+     * @return Builder[]|Collection
+     */
+    public function getWhereIn(string $column, $values)
+    {
+        return $this->model->whereIn($column, $values)->get();
+    }
+
+    /**
+     * Finds first model with "where" condition.
+     *
+     * @param  string|array  $column
+     * @param  mixed  $value
+     *
+     * @return Builder|Model|object|null
+     */
+    public function getWhereFirst($column, $value = null)
+    {
+        if (is_array($column)) {
+            $model = $this->model->where($column)->first();
+        } else {
+            $model = $this->model->where($column, $value)->first();
+        }
+
+        if (!$model) {
+            $this->throwModelNotFoundException();
+        }
+
+        return $model;
+    }
+
+    /**
+     * Finds first model with "whereIn" condition.
+     *
+     * @param  string  $column
+     * @param  mixed  $values
+     *
+     * @return Builder|Model|object|null
+     */
+    public function getWhereInFirst(string $column, $values)
+    {
+        $model = $this->model->whereIn($column, $values)->first();
+
+        if (!$model) {
+            $this->throwModelNotFoundException();
+        }
+
+        return $model;
+    }
+
+    /**
+     * Count models with "where" condition.
+     *
+     * @param  string|array  $column
+     * @param  mixed  $value
+     *
+     * @return int
+     */
+    public function count($column, $value = null)
+    {
+        return $this->getWhere($column, $value)->count();
+    }
+
+    /**
      * Finds models with "where" condition.
      *
-     * @param string|array $column
-     * @param mixed $value
+     * @param  string|array  $column
+     * @param  mixed  $value
      *
      * @return Builder[]|Collection
      */
@@ -114,57 +182,15 @@ trait SelectsEntity
     }
 
     /**
-     * Finds models with "whereIn" condition.
+     * Check if model existed with "where" condition.
      *
-     * @param string $column
-     * @param mixed $values
+     * @param  string|array  $column
+     * @param  mixed  $value
      *
-     * @return Builder[]|Collection
+     * @return bool
      */
-    public function getWhereIn(string $column, $values)
+    public function existed($column, $value = null)
     {
-        return $this->model->whereIn($column, $values)->get();
-    }
-
-    /**
-     * Finds first model with "where" condition.
-     *
-     * @param string|array $column
-     * @param mixed $value
-     *
-     * @return Builder|Model|object|null
-     */
-    public function getWhereFirst($column, $value = null)
-    {
-        if (is_array($column)) {
-            $model = $this->model->where($column)->first();
-        } else {
-            $model = $this->model->where($column, $value)->first();
-        }
-
-        if (! $model) {
-            $this->throwModelNotFoundException();
-        }
-
-        return $model;
-    }
-
-    /**
-     * Finds first model with "whereIn" condition.
-     *
-     * @param string $column
-     * @param mixed $values
-     *
-     * @return Builder|Model|object|null
-     */
-    public function getWhereInFirst(string $column, $values)
-    {
-        $model = $this->model->whereIn($column, $values)->first();
-
-        if (! $model) {
-            $this->throwModelNotFoundException();
-        }
-
-        return $model;
+        return $this->getWhere($column, $value)->count() > 0;
     }
 }

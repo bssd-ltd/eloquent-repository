@@ -7,7 +7,7 @@ interface Repository
     /**
      * Creates model.
      *
-     * @param mixed $properties
+     * @param  mixed  $properties
      *
      * @return mixed
      */
@@ -23,7 +23,7 @@ interface Repository
     /**
      * Returns all models with selected columns.
      *
-     * @param mixed ...$columns
+     * @param  mixed  ...$columns
      *
      * @return mixed
      */
@@ -32,7 +32,7 @@ interface Repository
     /**
      * Paginates models.
      *
-     * @param int $perPage
+     * @param  int  $perPage
      *
      * @return mixed
      */
@@ -41,7 +41,7 @@ interface Repository
     /**
      * Finds a model with ID.
      *
-     * @param int|string $modelId
+     * @param  int|string  $modelId
      *
      * @return mixed
      */
@@ -50,8 +50,8 @@ interface Repository
     /**
      * Finds models with "where" condition.
      *
-     * @param string $column
-     * @param mixed $value
+     * @param  string  $column
+     * @param  mixed  $value
      *
      * @return mixed
      */
@@ -60,8 +60,8 @@ interface Repository
     /**
      * Finds models with "whereIn" condition.
      *
-     * @param string $column
-     * @param mixed $values
+     * @param  string  $column
+     * @param  mixed  $values
      *
      * @return mixed
      */
@@ -70,8 +70,8 @@ interface Repository
     /**
      * Finds first model with "where" condition.
      *
-     * @param string $column
-     * @param mixed $value
+     * @param  string  $column
+     * @param  mixed  $value
      *
      * @return mixed
      */
@@ -80,8 +80,8 @@ interface Repository
     /**
      * Finds first model with "whereIn" condition.
      *
-     * @param string $column
-     * @param mixed $values
+     * @param  string  $column
+     * @param  mixed  $values
      *
      * @return mixed
      */
@@ -90,8 +90,8 @@ interface Repository
     /**
      * Updates a model given properties.
      *
-     * @param int|string $modelId
-     * @param mixed $properties
+     * @param  int|string  $modelId
+     * @param  mixed  $properties
      *
      * @return mixed
      */
@@ -100,8 +100,8 @@ interface Repository
     /**
      * Finds a model with ID and updates it with given properties.
      *
-     * @param int|string $modelId
-     * @param mixed $properties
+     * @param  int|string  $modelId
+     * @param  mixed  $properties
      *
      * @return mixed
      */
@@ -110,7 +110,7 @@ interface Repository
     /**
      * Deletes a model.
      *
-     * @param mixed $model
+     * @param  mixed  $model
      *
      * @return bool|mixed|null
      */
@@ -119,7 +119,7 @@ interface Repository
     /**
      * Finds a model with ID and deletes it.
      *
-     * @param int|string $modelId
+     * @param  int|string  $modelId
      *
      * @return bool|mixed|null
      */
@@ -128,7 +128,7 @@ interface Repository
     /**
      * Restores soft deleted model.
      *
-     * @param mixed $model
+     * @param  mixed  $model
      *
      * @return bool
      */
@@ -137,7 +137,7 @@ interface Repository
     /**
      * Finds a soft deleted model with given ID and restores it.
      *
-     * @param int|string $modelId
+     * @param  int|string  $modelId
      *
      * @return bool
      */
@@ -146,7 +146,7 @@ interface Repository
     /**
      * Finds a soft deleted model with given ID.
      *
-     * @param int|string $modelId
+     * @param  int|string  $modelId
      *
      * @return mixed
      */

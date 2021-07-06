@@ -2,9 +2,9 @@
 
 namespace Bssd\EloquentRepository\Repository\Eloquent\Criteria;
 
-use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Builder;
 use Bssd\EloquentRepository\Repository\Criteria\Criterion;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class EagerLoad implements Criterion
 {
@@ -16,7 +16,7 @@ class EagerLoad implements Criterion
     /**
      * EagerLoad constructor.
      *
-     * @param mixed ...$relations
+     * @param  mixed  ...$relations
      */
     public function __construct(...$relations)
     {
@@ -24,7 +24,7 @@ class EagerLoad implements Criterion
     }
 
     /**
-     * @param Builder|mixed $model
+     * @param  Builder|mixed  $model
      *
      * @return Builder|mixed
      */

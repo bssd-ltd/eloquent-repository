@@ -2,8 +2,8 @@
 
 namespace Bssd\EloquentRepository\Repository\Eloquent\Criteria;
 
-use Illuminate\Database\Eloquent\Builder;
 use Bssd\EloquentRepository\Repository\Criteria\Criterion;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrderBy implements Criterion
 {
@@ -19,8 +19,8 @@ class OrderBy implements Criterion
     /**
      * OrderBy constructor.
      *
-     * @param string $column
-     * @param string $sortBy
+     * @param  string  $column
+     * @param  string  $sortBy
      */
     public function __construct(string $column, string $sortBy)
     {
@@ -29,7 +29,7 @@ class OrderBy implements Criterion
     }
 
     /**
-     * @param Builder|mixed $model
+     * @param  Builder|mixed  $model
      *
      * @return Builder|mixed
      */

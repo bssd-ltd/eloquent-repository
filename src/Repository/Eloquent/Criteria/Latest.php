@@ -2,8 +2,8 @@
 
 namespace Bssd\EloquentRepository\Repository\Eloquent\Criteria;
 
-use Illuminate\Database\Eloquent\Builder;
 use Bssd\EloquentRepository\Repository\Criteria\Criterion;
+use Illuminate\Database\Eloquent\Builder;
 
 class Latest implements Criterion
 {
@@ -15,7 +15,7 @@ class Latest implements Criterion
     /**
      * Latest constructor.
      *
-     * @param string $column
+     * @param  string  $column
      */
     public function __construct(string $column = 'id')
     {
@@ -23,7 +23,7 @@ class Latest implements Criterion
     }
 
     /**
-     * @param Builder|mixed $model
+     * @param  Builder|mixed  $model
      *
      * @return Builder|mixed
      */

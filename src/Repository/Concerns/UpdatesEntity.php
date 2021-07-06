@@ -2,9 +2,9 @@
 
 namespace Bssd\EloquentRepository\Repository\Concerns;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Bssd\EloquentRepository\Repository\Contracts\Cacheable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method Builder|Model find($modelId)
@@ -16,8 +16,8 @@ trait UpdatesEntity
     /**
      * Finds a model with ID and updates it with given properties.
      *
-     * @param int|string $modelId
-     * @param mixed $properties
+     * @param  int|string  $modelId
+     * @param  mixed  $properties
      *
      * @return Builder|Model
      */
@@ -31,8 +31,8 @@ trait UpdatesEntity
     /**
      * Updates a model given properties.
      *
-     * @param Model $model
-     * @param mixed $properties
+     * @param  Model  $model
+     * @param  mixed  $properties
      *
      * @return Builder|Model
      */
