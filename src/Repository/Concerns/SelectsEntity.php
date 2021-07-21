@@ -195,7 +195,7 @@ trait SelectsEntity
     }
 
     /**
-     * Finds models with "where" condition and sort. Default sorted by desc primary key
+     * Finds models with "where" condition by order. Default sorted by desc primary key
      *
      * @param  array       $conditions
      * @param  array|null  $sortedBy
@@ -204,16 +204,37 @@ trait SelectsEntity
      *
      * @return Builder[]|Collection
      */
-    public function getWhereAndSort(array $conditions, array $sortedBy = null, ?int $limit = 5000, ?int $offset = 0)
+    public function getWhereWithSorted(array $conditions, array $sortedBy = null, ?int $limit = 5000, ?int $offset = 0)
+    {
+        $delegator = $this->getDelegatorByConditionsAndSortedBy($conditions, $sortedBy);
+        return $delegator->skip($offset)->take($limit)->get();
+    }
+
+    private function getDelegatorByConditionsAndSortedBy(array $conditions, array $sortedBy = null)
     {
         $sortedBy = empty($sortedBy) ? [$this->model->getKeyName() => 'desc'] : $sortedBy;
-        $delegator = $this->model;
-        foreach ($conditions as $key => $val) {
-            $delegator = $delegator->where($key, $val);
-        }
+        $delegator = $this->model->where($conditions);
         foreach ($sortedBy as $key => $val) {
             $delegator = $delegator->orderBy($key, $val);
         }
-        return $delegator->skip($offset)->take($limit)->get();
+        return $delegator;
+    }
+
+    /**
+     * Get a model with "where" condition by order. Default sorted by desc primary key
+     *
+     * @param  array       $conditions
+     * @param  array|null  $sortedBy
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object
+     */
+    public function getWhereFirstWithSorted(array $conditions, array $sortedBy = null)
+    {
+        $delegator = $this->getDelegatorByConditionsAndSortedBy($conditions, $sortedBy);
+        $model = $delegator->take(1)->first();
+        if (!$model) {
+            $this->throwModelNotFoundException();
+        }
+        return $model;
     }
 }
