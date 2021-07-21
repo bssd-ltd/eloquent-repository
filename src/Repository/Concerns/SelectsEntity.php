@@ -207,15 +207,13 @@ trait SelectsEntity
     public function getWhereAndSort(array $conditions, array $sortedBy = null, ?int $limit = 5000, ?int $offset = 0)
     {
         $sortedBy = empty($sortedBy) ? [$this->model->getKeyName() => 'desc'] : $sortedBy;
-        $searcher = $this->model;
+        $delegator = $this->model;
         foreach ($conditions as $key => $val) {
-            $searcher = $this->model->where($key, $val);
+            $delegator = $delegator->where($key, $val);
         }
         foreach ($sortedBy as $key => $val) {
-            $searcher = $this->model->orderBy($key, $val);
+            $delegator = $delegator->orderBy($key, $val);
         }
-        $searcher->limit($limit);
-        $searcher->offset($offset);
-        return $searcher->get();
+        return $delegator->skip($offset)->take($limit)->get();
     }
 }
