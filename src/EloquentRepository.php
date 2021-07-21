@@ -48,7 +48,7 @@ class EloquentRepository implements Repository
      * EloquentRepository constructor.
      *
      * @param  Application  $application
-     * @param  Cache  $cache
+     * @param  Cache        $cache
      *
      * @throws BindingResolutionException
      */

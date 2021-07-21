@@ -11,7 +11,7 @@ use Illuminate\Support\Arr;
 
 /**
  * @property-read Builder|Model $model
- * @property-read Factory $cache
+ * @property-read Factory       $cache
  * @method string cacheKey()
  * @method int cacheTTLValue()
  * @mixin \Bssd\EloquentRepository\EloquentRepository
@@ -100,7 +100,7 @@ trait SelectsEntity
      * Finds models with "whereIn" condition.
      *
      * @param  string  $column
-     * @param  mixed  $values
+     * @param  mixed   $values
      *
      * @return Builder[]|Collection
      */
@@ -113,7 +113,7 @@ trait SelectsEntity
      * Finds first model with "where" condition.
      *
      * @param  string|array  $column
-     * @param  mixed  $value
+     * @param  mixed         $value
      *
      * @return Builder|Model|object|null
      */
@@ -136,7 +136,7 @@ trait SelectsEntity
      * Finds first model with "whereIn" condition.
      *
      * @param  string  $column
-     * @param  mixed  $values
+     * @param  mixed   $values
      *
      * @return Builder|Model|object|null
      */
@@ -155,7 +155,7 @@ trait SelectsEntity
      * Count models with "where" condition.
      *
      * @param  string|array  $column
-     * @param  mixed  $value
+     * @param  mixed         $value
      *
      * @return int
      */
@@ -168,7 +168,7 @@ trait SelectsEntity
      * Finds models with "where" condition.
      *
      * @param  string|array  $column
-     * @param  mixed  $value
+     * @param  mixed         $value
      *
      * @return Builder[]|Collection
      */
@@ -185,7 +185,7 @@ trait SelectsEntity
      * Check if model existed with "where" condition.
      *
      * @param  string|array  $column
-     * @param  mixed  $value
+     * @param  mixed         $value
      *
      * @return bool
      */
@@ -197,12 +197,14 @@ trait SelectsEntity
     /**
      * Finds models with "where" condition and sort. Default sorted by desc primary key
      *
-     * @param  array  $conditions
+     * @param  array       $conditions
      * @param  array|null  $sortedBy
+     * @param  int|null    $limit
+     * @param  int|null    $offset
      *
      * @return Builder[]|Collection
      */
-    public function getWhereAndSort(array $conditions, array $sortedBy = null)
+    public function getWhereAndSort(array $conditions, array $sortedBy = null, ?int $limit = 5000, ?int $offset = 0)
     {
         $sortedBy = empty($sortedBy) ? [$this->model->getKeyName() => 'desc'] : $sortedBy;
         $searcher = $this->model;
@@ -212,6 +214,8 @@ trait SelectsEntity
         foreach ($sortedBy as $key => $val) {
             $searcher = $this->model->orderBy($key, $val);
         }
+        $searcher->limit($limit);
+        $searcher->offset($offset);
         return $searcher->get();
     }
 }

@@ -17,7 +17,7 @@ trait UpdatesEntity
      * Finds a model with ID and updates it with given properties.
      *
      * @param  int|string  $modelId
-     * @param  mixed  $properties
+     * @param  mixed       $properties
      *
      * @return Builder|Model
      */
