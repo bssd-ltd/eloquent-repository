@@ -27,6 +27,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "haruncpi/laravel-id-generator": "^1.0",
         "illuminate/console": "^8.0",
         "illuminate/container": "^8.0",
         "illuminate/contracts": "^8.0",
