@@ -115,21 +115,29 @@ trait SelectsEntity
      * @param  string|array  $column
      * @param  mixed         $value
      *
-     * @return Builder|Model|object|null
+     * @return \Illuminate\Database\Eloquent\Model|object|null
      */
     public function getWhereFirst($column, $value = null)
     {
-        if (is_array($column)) {
-            $model = $this->model->where($column)->first();
-        } else {
-            $model = $this->model->where($column, $value)->first();
-        }
-
+        $model = $this->buildGetWhereDelegator($column, $value)->first();
         if (!$model) {
             $this->throwModelNotFoundException();
         }
-
         return $model;
+    }
+
+    /**
+     * Build delegator for get where expression
+     *
+     * @param        $column
+     * @param  null  $value
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    private function buildGetWhereDelegator($column, $value = null): Builder
+    {
+        return is_array($column) ?
+            $this->model->where($column) : $this->model->where($column, $value);
     }
 
     /**
@@ -161,7 +169,7 @@ trait SelectsEntity
      */
     public function count($column, $value = null)
     {
-        return $this->getWhere($column, $value)->count();
+        return $this->buildGetWhereDelegator($column, $value)->count();
     }
 
     /**
@@ -174,11 +182,7 @@ trait SelectsEntity
      */
     public function getWhere($column, $value = null)
     {
-        if (is_array($column)) {
-            return $this->model->where($column)->get();
-        }
-
-        return $this->model->where($column, $value)->get();
+        return $this->buildGetWhereDelegator($column, $value)->get();
     }
 
     /**
@@ -191,7 +195,7 @@ trait SelectsEntity
      */
     public function existed($column, $value = null)
     {
-        return $this->getWhere($column, $value)->count() > 0;
+        return $this->buildGetWhereDelegator($column, $value)->exists();
     }
 
     /**
@@ -206,11 +210,19 @@ trait SelectsEntity
      */
     public function getWhereWithSorted(array $conditions, array $sortedBy = null, ?int $limit = 5000, ?int $offset = 0)
     {
-        $delegator = $this->getDelegatorByConditionsAndSortedBy($conditions, $sortedBy);
+        $delegator = $this->buildGetWhereDelegatorWithOrderBy($conditions, $sortedBy);
         return $delegator->skip($offset)->take($limit)->get();
     }
 
-    private function getDelegatorByConditionsAndSortedBy(array $conditions, array $sortedBy = null)
+    /**
+     * Build delegator get where expression with sorted by
+     *
+     * @param  array       $conditions
+     * @param  array|null  $sortedBy
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
+     */
+    private function buildGetWhereDelegatorWithOrderBy(array $conditions, array $sortedBy = null)
     {
         $sortedBy = empty($sortedBy) ? [$this->model->getKeyName() => 'desc'] : $sortedBy;
         $delegator = $this->model->where($conditions);
@@ -230,8 +242,8 @@ trait SelectsEntity
      */
     public function getWhereFirstWithSorted(array $conditions, array $sortedBy = null)
     {
-        $delegator = $this->getDelegatorByConditionsAndSortedBy($conditions, $sortedBy);
-        $model = $delegator->take(1)->first();
+        $delegator = $this->buildGetWhereDelegatorWithOrderBy($conditions, $sortedBy);
+        $model = $delegator->first();
         if (!$model) {
             $this->throwModelNotFoundException();
         }

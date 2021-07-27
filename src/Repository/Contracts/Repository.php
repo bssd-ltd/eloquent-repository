@@ -47,6 +47,27 @@ interface Repository
      */
     public function find($modelId);
 
+
+    /**
+     * Count models with "where" condition.
+     *
+     * @param  string|array  $column
+     * @param  mixed         $value
+     *
+     * @return int
+     */
+    public function count($column, $value = null);
+
+    /**
+     * Check if model existed with "where" condition.
+     *
+     * @param  string|array  $column
+     * @param  mixed         $value
+     *
+     * @return bool
+     */
+    public function existed($column, $value = null);
+
     /**
      * Finds models with "where" condition.
      *
